@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
+    <Button
+        android:id="@+id/nav_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:background="@mipmap/first_1"/>
+
     <TextView
         android:layout_centerInParent="true"
         android:textSize="20sp"
