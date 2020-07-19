@@ -2,10 +2,12 @@ package com.syn.weather.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.syn.weather.db.City;
 import com.syn.weather.db.County;
 import com.syn.weather.db.Province;
+import com.syn.weather.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,5 +75,17 @@ public class Utilist {
         }
 
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weather = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weather,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
